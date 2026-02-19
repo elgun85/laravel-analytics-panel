@@ -16,7 +16,7 @@ class ListUsers extends ListRecords
     {
         return [
             CreateAction::make(),
-           UserAnalyticsWidget::make(),
+         //  UserAnalyticsWidget::make(),
             
         ];
     }

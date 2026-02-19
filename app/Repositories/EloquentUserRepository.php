@@ -8,7 +8,7 @@ class EloquentUserRepository implements UserRepositoryInterface
 {
     public function getTodayCount(): int
     {
-        return User::whereDate('created_at', [
+        return User::whereBetween('created_at', [
             now()->startOfDay(),
             now()->endOfDay()
         ])->count();
@@ -16,7 +16,7 @@ class EloquentUserRepository implements UserRepositoryInterface
 
     public function getThisWeekCount(): int
     {
-        return User::whereDate('created_at', [
+        return User::whereBetween('created_at', [
             now()->startOfWeek(),
             now()->endOfWeek()
         ])->count();
@@ -24,7 +24,7 @@ class EloquentUserRepository implements UserRepositoryInterface
 
     public function getThisMonthCount(): int
     {
-        return User::whereDate('created_at', [
+        return User::whereBetween('created_at', [
             now()->startOfMonth(),
             now()->endOfMonth()
         ])->count();

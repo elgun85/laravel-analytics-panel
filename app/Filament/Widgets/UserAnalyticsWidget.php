@@ -12,11 +12,11 @@ class UserAnalyticsWidget extends StatsOverviewWidget
     {
         $analytics = app(UserAnalyticsService::class)->getAnalytics();
 
-       // dd($analytics);
+      // dd($analytics);
         return [
             Stat::make('Today Users', $analytics->today),
-            Stat::make('Week Users', $analytics->week),
-            Stat::make('Month Users', $analytics->month),
+            Stat::make('This Week Users',  $analytics->week),
+            Stat::make('This Month Users', $analytics->month),
             Stat::make('Total Users', $analytics->total),
 
 
