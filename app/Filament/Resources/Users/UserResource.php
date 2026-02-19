@@ -7,6 +7,7 @@ use App\Filament\Resources\Users\Pages\EditUser;
 use App\Filament\Resources\Users\Pages\ListUsers;
 use App\Filament\Resources\Users\Schemas\UserForm;
 use App\Filament\Resources\Users\Tables\UsersTable;
+use App\Filament\Widgets\UserAnalyticsWidget;
 use App\Models\User;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -49,4 +50,11 @@ class UserResource extends Resource
             'edit' => EditUser::route('/{record}/edit'),
         ];
     }
+
+/*     public static function getWidgets(): array
+    {
+        return [
+            UserAnalyticsWidget::class,
+        ];
+    } */
 }
