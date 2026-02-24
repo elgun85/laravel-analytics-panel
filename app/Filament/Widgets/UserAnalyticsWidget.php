@@ -12,7 +12,9 @@ class UserAnalyticsWidget extends StatsOverviewWidget
   protected function getStats(): array
   {
     //  $analytics = app(UserAnalyticsService::class)->getAnalytics();
-    $data = AnalyticsUser::where('date', today())->first();
+    $data = AnalyticsUser::
+    //where('date', today())->
+    first();
 
 
     /*         return [

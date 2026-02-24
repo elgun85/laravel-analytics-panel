@@ -1,5 +1,8 @@
 <?php
 namespace App\DTOs;
+
+use Illuminate\Support\Collection;
+
 class UserAnalyticsDTO
 {
     public function __construct(
@@ -7,6 +10,7 @@ class UserAnalyticsDTO
         public int $week,
         public int $month,
         public int $total,
+        public Collection $monthly
     ) {
     }
 }

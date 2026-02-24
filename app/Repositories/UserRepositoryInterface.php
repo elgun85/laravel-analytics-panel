@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use Illuminate\Support\Collection;
 
 interface UserRepositoryInterface
 {
@@ -8,5 +9,6 @@ interface UserRepositoryInterface
     public function getThisWeekCount(): int;
     public function getThisMonthCount(): int;
     public function getTotalCount(): int;
+    public function getAyliqUserSayisi(): Collection;
 
 }
