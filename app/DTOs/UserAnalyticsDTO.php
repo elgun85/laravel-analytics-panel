@@ -10,7 +10,9 @@ class UserAnalyticsDTO
         public int $week,
         public int $month,
         public int $total,
-        public Collection $monthly
+        public Collection $monthly,
+        public int $tarix
+
     ) {
     }
 }

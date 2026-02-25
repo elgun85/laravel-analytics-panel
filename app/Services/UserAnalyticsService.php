@@ -12,20 +12,26 @@ class UserAnalyticsService
     ) {
     }
 
-    public function getAnalytics(): UserAnalyticsDTO
+public function getAnalytics($startDate = null, $endDate = null): UserAnalyticsDTO
 {
-    return Cache::remember('user_analytics', 3000, function () {
+    return Cache::remember(
+        "user_analytics_{$startDate}_{$endDate}",
+        3000,
+        function () use ($startDate, $endDate) {
 
-        $monthly = $this->userRepository->getAyliqUserSayisi();
+            $monthly = $this->userRepository
+                ->getAyliqUserSayisi($startDate, $endDate);
 
-        return new UserAnalyticsDTO(
-            today: $this->userRepository->getTodayCount(),
-            week: $this->userRepository->getThisWeekCount(),
-            month: $this->userRepository->getThisMonthCount(),
-            total: $this->userRepository->getTotalCount(),
-            monthly: $monthly,
-        );
-    });
+            return new UserAnalyticsDTO(
+                today: $this->userRepository->getTodayCount($startDate, $endDate),
+                week: $this->userRepository->getThisWeekCount($startDate, $endDate),
+                month: $this->userRepository->getThisMonthCount($startDate, $endDate),
+                total: $this->userRepository->getTotalCount($startDate, $endDate),
+                monthly: $monthly,
+                tarix: $this->userRepository->getTarix($startDate, $endDate),
+            );
+        }
+    );
 }
 
 

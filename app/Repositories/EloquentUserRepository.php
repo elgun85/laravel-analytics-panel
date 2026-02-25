@@ -4,11 +4,27 @@ namespace App\Repositories;
 
 use App\Models\User;
 use Carbon\Carbon;
+use Filament\Widgets\Concerns\InteractsWithPageFilters;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
 
 class EloquentUserRepository implements UserRepositoryInterface
 {
+    
+
+public function getTarix($startDate = null, $endDate = null): int
+{
+    return User::query()
+        ->when($startDate, fn($q) =>
+            $q->whereDate('created_at', '>=', $startDate)
+        )
+        ->when($endDate, fn($q) =>
+            $q->whereDate('created_at', '<=', $endDate)
+        )
+        ->count();
+}
+
 
     public function getAyliqUserSayisi(): Collection
     {
@@ -20,25 +36,24 @@ class EloquentUserRepository implements UserRepositoryInterface
             ->groupByRaw('YEAR(created_at), MONTH(created_at)')
             ->orderByRaw('YEAR(created_at) DESC, MONTH(created_at) DESC')
             ->get();
-            $months =collect();
-            for($i=11;$i>=0;$i--){
+        $months = collect();
+        for ($i = 11; $i >= 0; $i--) {
 
-            $date=Carbon::now()->subMonths($i);
-            $found=$data->first(function ($item) use ($date) {
+            $date = Carbon::now()->subMonths($i);
+            $found = $data->first(function ($item) use ($date) {
                 return $item->year == $date->year && $item->month == $date->month;
-
             });
             $months->push((object)[
                 'year' => $date->year,
                 'month' => $date->month,
                 'total' => $found->total ?? 0,
             ]);
-            }
-             return $months;
-
+        }
+        return $months;
     }
     public function getTodayCount(): int
     {
+
         return User::whereBetween('created_at', [
             now()->startOfDay(),
             now()->endOfDay()

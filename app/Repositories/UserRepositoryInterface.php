@@ -10,5 +10,6 @@ interface UserRepositoryInterface
     public function getThisMonthCount(): int;
     public function getTotalCount(): int;
     public function getAyliqUserSayisi(): Collection;
+    public function getTarix(): int;
 
 }

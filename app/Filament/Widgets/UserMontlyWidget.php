@@ -6,12 +6,16 @@ use App\Services\UserAnalyticsService;
 use Filament\Widgets\ChartWidget;
 
 class UserMontlyWidget extends ChartWidget
+
 {
     protected ?string $heading = 'User Montly Widget';
+    protected static ?int $sort = 2; 
 
     protected function getData(): array
     {
+        
          $montlyAnalyticcs= app(UserAnalyticsService::class)->getAnalytics();
+         
 
          $monthly = $montlyAnalyticcs->monthly;
              $labels = $monthly->map(function ($item) {
