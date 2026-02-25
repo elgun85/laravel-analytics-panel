@@ -9,4 +9,20 @@ class Customer extends Model
 {
     /** @use HasFactory<\Database\Factories\CustomerFactory> */
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'address',
+        'city',
+        'state',
+        'postal_code',
+        'country',
+        'company',
+        'notes',
+        'created_at',
+        'updated_at',
+
+
+    ];
 }
