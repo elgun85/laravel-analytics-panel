@@ -2,11 +2,14 @@
 
 namespace App\Providers;
 
+use App\Interface\AnalyseInterface;
 use App\Repositories\CustomerRepositoryInterface;
+use App\Repositories\EleguentAnalyseRepository;
 use App\Repositories\EleguentCustomerRepository;
 use App\Repositories\EloquentUserRepository;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +25,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             CustomerRepositoryInterface::class,
             EleguentCustomerRepository::class,
+
+        );
+
+        $this->app->bind(
+            AnalyseInterface::class,
+            EleguentAnalyseRepository::class,
         );
     }
 
