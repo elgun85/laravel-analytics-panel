@@ -8,8 +8,13 @@ Toplam: {{ $this->data->sum('count') }}
 <hr style="color: red">
 
 <p>menzil sayi: {{$menzil_say}}</p>   
+<p>menzil-de qurum sayi: {{$menzil_qurum}}</p>   
 <p>qurum sayi : {{$qurum}}</p>
-{{-- @foreach ($this->data_analizi as $item)
+
+<hr style="color: red">
+
+
+@foreach ($this->datam as $item)
     <p>{{ $item->NOTEL }}
           - {{ $item->ABONENT }}
           - {{$item->KODTARIF}}
@@ -18,7 +23,7 @@ Toplam: {{ $this->data->sum('count') }}
           - {{$item->KODXIDMET}}
         </p>    
 @endforeach
-<h3>Hesablama ayliq : {{ $this->data_analizi->sum('SUMMA') }}</h3> --}}
+<h3>Hesablama ayliq : {{ $this->datam->sum('SUMMA') }}</h3>
 
 
 

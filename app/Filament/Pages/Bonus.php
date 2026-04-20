@@ -13,7 +13,7 @@ use Filament\Tables\Table;
 class Bonus extends Page
 {
     public $data;
-    public $menzil_say, $qurum, $data_analizi, $a;
+    public $menzil_say, $qurum, $data_analizi, $datam,$menzil_qurum;
     //use InteractsWithTable;
 
 
@@ -25,11 +25,13 @@ class Bonus extends Page
 
         $this->data_analizi = $service->tekrar_nomre_sayi_analizi();
         
-        $this->a = $this->data_analizi['a'];
+        $this->datam = $this->data_analizi['datam'];
         $this->menzil_say = $this->data_analizi['menzil_say'];
+        $this->menzil_qurum = $this->data_analizi['menzil_qurum'];
         $this->qurum = $this->data_analizi['qurum'];
 
-            // dd($this->menzil_say);
+
+           //  dd($this->datam);
 
     }
 
