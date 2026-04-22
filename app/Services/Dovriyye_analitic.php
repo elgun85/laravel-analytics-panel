@@ -74,13 +74,17 @@ class Dovriyye_analitic
                 THEN 'Büdcə'
                 ELSE 'Qeyri büdcə'
             END as maliyye_novu,
-            Sum(CASE WHEN ay=1 AND il=2025 THEN giris_saldo END) as borc_yanvar_2025,
-            Sum(CASE WHEN ay=1 AND il=2026 THEN giris_saldo END) as borc_yanvar_2026,
-            Sum(CASE WHEN ay=3 AND il=2026 THEN hesablanma END) as hesablanma_mart_2026,
-            Sum(CASE WHEN ay=3 AND il=2026 THEN cixis_saldo END) as cixis_mart_2026
+
+
+            SUM(CASE WHEN ay=1 AND il=2025 THEN giris_saldo ELSE 0 END) as borc_yanvar_2025,
+            SUM(CASE WHEN ay=1 AND il=2026 THEN giris_saldo ELSE 0 END) as borc_yanvar_2026,
+            SUM(CASE WHEN ay=3 AND il=2026 THEN hesablanma ELSE 0 END) as hesablanma_mart_2026,
+            SUM(CASE WHEN ay=3 AND il=2026 THEN cixis_saldo ELSE 0 END) as cixis_mart_2026
             "
             )
             ->groupBy('hesab')
+            ->whereIn('hesab', [1, 18, 20])
+
             ->orderBy('hesab', 'asc')
 
         ;

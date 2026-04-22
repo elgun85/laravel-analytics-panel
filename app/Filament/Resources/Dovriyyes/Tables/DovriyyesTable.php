@@ -28,8 +28,8 @@ class DovriyyesTable
                 TextColumn::make('maliyye_novu')->label('Maliyye Növü'),
                 TextColumn::make('borc_yanvar_2025')->label('01.01.2025')->numeric(decimalPlaces: 2, decimalSeparator: ',', thousandsSeparator: ' '),
                 TextColumn::make('borc_yanvar_2026')->label('01.01.2026')->numeric(decimalPlaces: 2, decimalSeparator: ',', thousandsSeparator: ' '),
-                TextColumn::make('hesablanma_mart_2026')->label('Hesablanma - 01.03.2026') ->numeric(decimalPlaces: 2, decimalSeparator: ',', thousandsSeparator: ' '),
-                TextColumn::make('cixis_mart_2026')->label('31.03.2026') ->numeric(decimalPlaces: 2, decimalSeparator: ',', thousandsSeparator: ' '),
+                TextColumn::make('hesablanma_mart_2026')->label('Hesablanma - 01.03.2026')->numeric(decimalPlaces: 2, decimalSeparator: ',', thousandsSeparator: ' '),
+                TextColumn::make('cixis_mart_2026')->label('31.03.2026')->numeric(decimalPlaces: 2, decimalSeparator: ',', thousandsSeparator: ' '),
 
 
             ])
